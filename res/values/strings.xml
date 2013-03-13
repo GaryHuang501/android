@@ -11,4 +11,6 @@
 	<string name="white">#ffffff</string>
 	<string name="mGPLusID">gkh</string>
 	<string name="mReturnID">gkh501</string>
+	<string name="gPlusButtonText">Share on Google+</string>
+	<string name="gDriveButtonText">Share on Google Drive</string>
 </resources>

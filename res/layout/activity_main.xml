@@ -7,10 +7,16 @@
 	>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/gPlusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="onClick"
-        android:text="Button" />
+        android:onClick="onShareGPlus"
+        android:text="@string/gPlusButtonText" />
+    <Button
+        android:id="@+id/gDriveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onShareGDrive"
+        android:text="@string/gDriveButtonText" />
 
 </LinearLayout>

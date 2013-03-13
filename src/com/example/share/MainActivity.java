@@ -22,9 +22,16 @@ public class MainActivity extends Activity{
 		return true;
 	}
 	
-	public void onClick(View view)
+	public void onShareGPlus(View view)
 	{
 		Intent intent = new Intent(this, ShareActivity.class);
+		startActivity(intent);
+		
+	}
+	
+	public void onShareGDrive(View view)
+	{
+		Intent intent = new Intent(this, GoogleDriveActivity.class);
 		startActivity(intent);
 		
 	}
