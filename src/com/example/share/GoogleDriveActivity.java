@@ -11,6 +11,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -30,13 +31,31 @@ public class GoogleDriveActivity extends Activity {
   private static Uri fileUri;
   private static Drive service;
   private GoogleAccountCredential credential;
-
+  private static final String ACTION_DRIVE_OPEN = "com.google.android.apps.drive.DRIVE_OPEN";
+  private static final String EXTRA_FILE_ID = "resourceId";
+  private String mFileId;
+  
   @Override
   public void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
 	setContentView(R.layout.google_drive_activity);
-    //credential = GoogleAccountCredential.usingOAuth2(this, DriveScopes.DRIVE);
-    //startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
+    credential = GoogleAccountCredential.usingOAuth2(this, DriveScopes.DRIVE);
+    
+    // Get the action that triggered the intent filter for this Activity
+    final Intent intent = getIntent();
+    final String action = intent.getAction();
+
+    // Means user opened text from here
+    if (ACTION_DRIVE_OPEN.equals(action)) {
+      mFileId = intent.getStringExtra(EXTRA_FILE_ID);
+      Log.i("cDrive", "Text detected!");  
+    }
+    else if (getString(R.string.action_upload_drive).equals(action))
+    {
+    	startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
+    }
+    else
+    	finish();
   }
 
   @Override
@@ -95,7 +114,6 @@ public class GoogleDriveActivity extends Activity {
           File file = service.files().insert(body, mediaContent).execute();
           if (file != null) {
             showToast("Photo uploaded: " + file.getTitle());
-            startCameraIntent();
           }
         } catch (UserRecoverableAuthIOException e) {
           startActivityForResult(e.getIntent(), REQUEST_AUTHORIZATION);

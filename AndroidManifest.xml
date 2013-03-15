@@ -50,10 +50,14 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".GoogleDrive"
-            android:exported="false">
+            android:name=".GoogleDriveActivity"
+            android:exported="true">
+        <meta-data android:name="com.google.android.apps.drive.APP_ID" android:value="id=184291749264" />
             <intent-filter>
+       		 	<data android:mimeType="application/vnd.google-apps.drive-sdk.184291749264" />
+      	 	 	<data android:mimeType="text/plain" />
                 <action android:name="android.intent.action.MAIN" />
+                <action android:name="com.google.android.apps.drive.DRIVE_OPEN" />
             </intent-filter>
         </activity>
         <activity

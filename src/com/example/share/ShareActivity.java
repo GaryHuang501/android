@@ -77,13 +77,11 @@ public class ShareActivity extends FragmentActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.send_interactive_button:
-                // Set sharing so that the share is started in onSignedIn.
-                mSharing = true;
-                mPlusClientFragment.signIn(REQUEST_CODE_PLUS_CLIENT_FRAGMENT);
-                break;
-        }
+
+           // Set sharing so that the share is started in onSignedIn.
+          mSharing = true;
+          mPlusClientFragment.signIn(REQUEST_CODE_PLUS_CLIENT_FRAGMENT);
+
     }
 
     @Override

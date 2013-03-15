@@ -163,6 +163,7 @@ containing a value of this type.
     }
     public static final class string {
         public static final int action_settings=0x7f050012;
+        public static final int action_upload_drive=0x7f05001d;
         public static final int app_name=0x7f050011;
         /**   Title for notification shown when GooglePlayServices is unavailable [CHAR LIMIT=70] 
          */

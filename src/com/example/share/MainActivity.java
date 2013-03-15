@@ -31,7 +31,10 @@ public class MainActivity extends Activity{
 	
 	public void onShareGDrive(View view)
 	{
+		
+		
 		Intent intent = new Intent(this, GoogleDriveActivity.class);
+		intent.setAction(getString(R.string.action_upload_drive));
 		startActivity(intent);
 		
 	}
